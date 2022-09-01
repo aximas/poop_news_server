@@ -20,27 +20,21 @@ class NewsController {
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             if (req.query) {
-                console.log('req.query', req.query);
                 const queryString = (0, getQueryToString_1.getQueryToString)(req.query);
-                console.log('queryString', queryString);
                 try {
                     const news = yield axios_1.default.get(`${api_1.NewsAPI.getAll}${queryString}`);
-                    console.log('news', news.data);
                     return res.status(200).json(news.data);
                 }
                 catch (e) {
-                    console.log(e);
                     return res.status(e.response.status).json(Object.assign({}, e.response.data));
                 }
             }
             else {
                 try {
                     const news = yield axios_1.default.get(`${api_1.NewsAPI.getAll}`);
-                    console.log('news', news.data);
                     return res.status(200).json(news.data);
                 }
                 catch (e) {
-                    console.log(e);
                     return res.status(e.response.status).json(Object.assign({}, e.response.data.results));
                 }
             }
