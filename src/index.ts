@@ -8,7 +8,7 @@ import {News} from './controllers/news.controller';
 
 const app = express();
 const router = express.Router();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 
 app.use(express.json()); // for parsing application/json
 app.use(cookieParser()); //for parsing from cookie
